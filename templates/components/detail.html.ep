@@ -1,0 +1,156 @@
+<h1 id="chartdetails">Chart details</h1>
+<div id="x_type">
+  <div class="form-row tall continuous">
+    <div class="form-group col-md-6">
+      <label for="x_var">What variable does the X scale represent?</label>
+      <input class="form-control" id="x_var" name="x_var" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="x_min">What&#39;s the minimum value?</label>
+      <input class="form-control" id="x_min" name="x_min" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="x_max">And the maximum?</label>
+      <input class="form-control" id="x_max" name="x_max" type="text">
+    </div>
+  </div>
+  <div class="form-group groups">
+    <label for="x_items_list">Can you list the groups you want to create on the X axis?</label>
+    <textarea class="form-control col-md-10" id="x_items_list" name="x_items_list" type="text"></textarea>
+    <small class="form-text text-muted">use semicolons (;) or newlines to separate the list items </small>
+    <label for="x_items_var">What do they represent?</label>
+    <input class="form-control col-md-10" id="x_items_var" name="x_items_var" type="text">
+  </div>
+  <div class="form-row time">
+    <div class="form-group col-md-3 tall">
+      <label for="x_start">What is the starting point for this time scale?</label>
+      <input class="form-control" id="x_start" name="x_start" type="text">
+    </div>
+    <div class="form-group col-md-3 tall">
+      <label for="x_end">And the end?</label>
+      <input class="form-control" id="x_end" name="x_end" type="text">
+    </div>
+    <div class="form-group col-md-6 tall">
+      <label for="time_resolution">How precise should the time scale be?</label>
+      <div class="form-check form-check-inline">
+	<input class="form-check-input" id="time_resolution_1" name="time_resolution" type="radio" value="days">
+	<label class="form-check-label" for="time_resolution_1">days</label>
+      </div>
+      <div class="form-check form-check-inline">
+	<input class="form-check-input" id="time_resolution_2" name="time_resolution" type="radio" value="weeks">
+	<label class="form-check-label" for="time_resolution_2">weeks</label>
+      </div>
+      <div class="form-check form-check-inline">
+	<input class="form-check-input" id="time_resolution_3" name="time_resolution" type="radio" value="months">
+	<label class="form-check-label" for="time_resolution_3">months</label>
+      </div>
+      <div class="form-check form-check-inline">
+	<input class="form-check-input" id="time_resolution_4" name="time_resolution" type="radio" value="hours">
+	<label class="form-check-label" for="time_resolution_4">hours</label>
+      </div>
+      <div class="form-check form-check-inline">
+	<input class="form-check-input" id="time_resolution_5" name="time_resolution" type="radio" value="minutes">
+	<label class="form-check-label" for="time_resolution_5">minutes</label>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="y_type">
+  <div class="form-row tall continuous">
+    <div class="form-group col-md-6">
+      <label for="y_var">What variable does the Y scale represent?</label>
+      <input class="form-control" id="y_var" name="y_var" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="y_min">What&#39;s the minimum value?</label>
+      <input class="form-control" id="y_min" name="y_min" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="y_max">And the maximum?</label>
+      <input class="form-control" id="y_max" name="y_max" type="text">
+    </div>
+  </div>
+  <div class="form-group groups">
+    <label for="y_items_list">Can you list the groups you want to create on the Y axis?</label>
+    <textarea class="form-control col-md-10" id="y_items_list" name="y_items_list" type="text"></textarea>
+    <small class="form-text text-muted">use semicolons (;) or newlines to separate the list items </small>
+    <label for="y_items_var">What do they represent?</label>
+    <input class="form-control col-md-10" id="y_items_var" name="y_items_var" type="text">
+  </div>
+</div>
+<div id="resize_items">
+  <div class="form-row tall one_way two_ways">
+    <div class="form-group col-md-6">
+      <label for="x_size_var">What variable does the X size represent?</label>
+      <input class="form-control" id="x_size_var" name="x_size_var" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="x_size_min">What&#39;s the minimum value?</label>
+      <input class="form-control" id="x_size_min" name="x_size_min" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="x_size_max">And the maximum?</label>
+      <input class="form-control" id="x_size_max" name="x_size_max" type="text">
+    </div>
+  </div>
+  <div class="form-row tall two_ways">
+    <div class="form-group col-md-6">
+      <label for="y_size_var">What variable does the Y size represent?</label>
+      <input class="form-control" id="y_size_var" name="y_size_var" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="y_size_min">What&#39;s the minimum value?</label>
+      <input class="form-control" id="y_size_min" name="y_size_min" type="text">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="y_size_max">And the maximum?</label>
+      <input class="form-control" id="y_size_max" name="y_size_max" type="text">
+    </div>
+  </div>
+</div>
+<div id="color_code">
+  <div class="groups">
+    <div class="form-group">
+      <label for="code_items_list">Can you list the groups you want to use for color coding?</label>
+      <textarea class="form-control col-md-10" id="code_items_list" name="code_items_list" type="text"></textarea>
+      <small class="form-text text-muted">use semicolons (;) or newlines to separate the list items </small>
+      <label for="code_items_var">What do they represent?</label>
+      <input class="form-control col-md-10" id="code_items_var" name="code_items_var" type="text">
+    </div>
+  </div>
+  <div class="values">
+    <div class="form-row tall">
+      <div class="form-group col-md-6">
+	<label for="color_var">What variable does the color scale represent?</label>
+	<input class="form-control" id="x_var" name="color_var" type="text">
+      </div>
+      <div class="form-group col-md-2">
+	<label for="color_min">What&#39;s the minimum value?</label>
+	<input class="form-control" id="x_min" name="color_min" type="text">
+      </div>
+      <div class="form-group col-md-2">
+	<label for="color_max">And the maximum?</label>
+	<input class="form-control" id="x_max" name="color_max" type="text">
+      </div>
+    </div>
+  </div>
+  <div class="values groups">
+    <div class="form-row">
+      <div class="form-group col-md-10">
+	<label for="what_color_scale_would_you_like_to_use">What color scale would you like to use?</label>
+	<input class="form-control" id="what_color_scale_would_you_like_to_use" name="what_color_scale_would_you_like_to_use" type="text">
+      </div>
+    </div>
+  </div>    
+</div>
+<div id="texture_code">
+  <div class="yes">
+    <div class="form-group">
+      <label for="texture_items_list">Can you list the groups you want to use for texture coding?</label>
+      <textarea class="form-control col-md-10" id="texture_items_list" name="texture_items_list" type="text"></textarea>
+      <small class="form-text text-muted">use semicolons (;) or newlines to separate the list items </small>
+      <label for="texture_items_var">What do they represent?</label>
+      <input class="form-control col-md-10" id="texture_items_var" name="texture_items_var" type="text">
+    </div>
+  </div>
+</div>

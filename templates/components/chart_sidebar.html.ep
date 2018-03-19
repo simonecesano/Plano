@@ -1,0 +1,37 @@
+<style>
+  #sidebar label { font-size: 12px; }
+  #sidebar .form-group > label { font-weight: bold; }
+  .slider { width: 100% }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.1/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" media="screen" />
+<script id="sidebar-template" type="text/x-handlebars-template">
+  <form id="sidebar">
+    {{#each data as |value key|}}
+    <div class="form-group">
+      <label for="{{key}}">{{value.name}}</label>
+      {{#if this.list }}
+      <br />
+      {{#each this.list }}
+      <div class="form-check form-check-inline">
+	<input class="form-check-input" id="{{key}}_{{@index}}" name="{{key}}" type="radio" value="{{this}}">
+	<label class="form-check-label" for="{{key}}_{{@index}}">{{this}}</label>
+      </div>
+      {{/each}}
+      {{else}}
+      <p style="width=100%; padding-left:1em">
+	<input class="slider" id="{{@key}}_val_slider" data-provide="slider" data-slider-id="{{@key}}_val_slider_slider"
+	       type="text" data-slider-min="{{ this.bounds.[0] }}" data-slider-max="{{ this.bounds.[1] }}"
+	       data-slider-step="1" data-slider-value="{{ this.bounds.[0] }}"/>
+	<span style="padding-left:1em">{{ this.bounds.[0] }}</span>
+      </p>
+      {{/if}}
+    </div>
+  {{/each}}
+</form>
+</script>
+<script id="foobar-template" type="text/x-handlebars-template">
+  	<input class="form-control form-control-sm" id="{{@key}}_val" name="{{@key}}_val"
+	       type="text" value="{{ this.bounds.[0] }}-{{ this.bounds.[1] }}">
+</script>

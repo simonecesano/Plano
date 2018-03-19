@@ -1,0 +1,131 @@
+% layout 'default';
+<body>
+  <style>
+  </style>
+  <div class="container">
+    <div class="row">
+      %= include 'components/menu';  
+      <div id="chart" style="border: thin solid grey" class="col-md-8 col-md-offset-0">
+      </div>
+      <div id="sidebar" class="col-md-4 col-md-offset-0">
+	<div id="detail">
+	</div>
+	<div id="debug">
+	  <pre>
+	  </pre>
+	</div>
+	<div id="changed">
+	  <pre>
+	  </pre>
+	</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  $(function(){
+      var u = new URI;
+      var s = u.search(true);
+      // console.log($('#chart').height(),
+      // 		  $('#chart').position().top,
+      // 		  window.innerHeight)
+      
+      var w = $('#chart').width(),
+	  h = window.innerHeight - $('#chart').position().top - $(window).height() * 0.30,
+	  pad = 50; // defining width and height of the SVG element; and a little padding for the plot
+
+      var svg = d3.select("#chart") // Select the plot element from the DOM
+	  .append("svg") // Append an SVG element to it
+	  .attr("height", h)
+	  .attr("width", w);
+
+      const dataset = [[5, 20, 30], [48, 90, 20], [25, 50, 100], [10, 33, 40], [33, 85, 60]];
+
+      // Create the scales and axes.
+      
+      // Scales
+      var xScale = d3.scaleLinear() // For the X axis
+	  .domain([s.x_min, s.x_max])
+	  .range([pad, w - pad]);
+      
+      var yScale = d3.scaleLinear() // For the Y axis
+	  .domain([s.x_min, s.y_max])
+	  .range([h - pad, pad]);
+      
+      var rScale = d3.scaleLinear() // Custom scale for the radii
+	  .domain([s.x_size_min, s.x_size_max])
+	  .range([1, 100]); // Custom range, change it to see the effects!
+      
+      // Axes
+      var xAxis = d3.axisBottom(xScale); // handy axes for any orientation
+      var yAxis = d3.axisLeft(yScale);
+      
+
+      //-----------------------------------------------------------------
+      // dragging
+      //-----------------------------------------------------------------
+      function dragstarted(d) {
+	  // console.log(d3.event);
+	  d3.select(this).raise().classed("active", true);
+      }
+      
+      function dragged(d) {
+	  if (d3.event.sourceEvent.shiftKey) {
+	      var r = Math.min(s.x_size_max, Math.max(s.x_size_min, Math.abs(d3.select(this).attr("cx") - d3.event.x)));
+	      d3.select(this).attr("r", r)
+	  } else {
+	      d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+	  }
+	  
+      }
+      
+      function dragended(d) {
+	  d3.select(this).classed("active", false);
+      }
+      
+      //-----------------------------------------------------------------
+      // Plotting the data.
+      //-----------------------------------------------------------------
+	  
+      var circ = svg.selectAll("circle") // Returns ALL matching elements
+	  .data(dataset)                 // Bind data to DOM
+	  .enter()                       // Add one circle per such data point
+	  .append("circle")
+	  .attr("cx", function(d) { return xScale(d[0]); })
+	  .attr("cy", function(d) { return yScale(d[1]); })
+	  .attr("r", function(d) { return rScale(d[2]); })
+	  .attr("fill", "blue").attr("opacity", 0.5)
+	  .on('click', function(d){
+	      console.log(d)
+	  })
+	  .call(d3.drag()
+		.on("start", dragstarted)
+		.on("drag", dragged)
+		.on("end", dragended));
+      
+      //-----------------------------------------------------------------
+      // dumping the data
+      //-----------------------------------------------------------------
+
+      $('#data_dropdown_menu .save').click(function(e){
+	  svg.selectAll("circle").each(function(e){
+	      console.log(e);
+	      console.log([
+		  xScale.invert($(this).attr('cx')),
+		  yScale.invert($(this).attr('cy')),
+		  rScale.invert($(this).attr('r'))
+	      ]);
+	  })
+      })
+%= include 'components/foobar', format => 'js';  
+      var source   = document.getElementById("sidebar-template").innerHTML;
+      var template = Handlebars.compile(source);
+      $('#detail').html(template({ data : q }));
+      $('.slider').each(function(i, e){
+	  $(e).slider({ formatter: function(value) { return 'Current value: ' + value; } })
+	      .on('change', function(e){ $(this).next().html(e.value.newValue) })
+      })
+      ;      
+  })
+</script>
+%= include 'components/chart_sidebar';

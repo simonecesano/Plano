@@ -1,0 +1,69 @@
+% layout 'default';
+<body>
+  <style>
+  </style>
+  <div class="container">
+    <div class="row">
+      %= include 'components/menu';  
+      <div id="menu" style="border: thin solid grey" class="col-md-10 col-md-offset-0">
+	What would you like the X axis to represent?
+
+	- a continuous scale
+	- time
+	- groups of items
+
+	And on the Y axis?
+
+	- a continuous scale
+	- groups of items
+	- a list of items
+
+	Do you want to be able to resize items?
+
+	- one way (overall size only)
+	- two ways (width and height separately)
+
+	What shape would you like your items to be?
+
+	- circles
+	- rectangles
+	- rectangles with round corners
+
+	Would you like to color code your items?
+
+	- yes
+	- no
+
+	Would you like to also use texture fills to classify your items? 
+
+	- yes
+	- no
+
+	What does the scale represent?
+
+	What's the minimum value?
+
+	And the maximum?
+
+	What is the starting point for this time scale?
+
+	And the end?
+
+	How precise should the time scale be?
+
+	- days
+	- weeks
+	- months
+	- hours
+	- minutes
+
+	Can you list the groups you want to create? use semicolons (;) or newlines to separate the list items
+
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  $(function(){
+  })
+</script>

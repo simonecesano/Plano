@@ -1,0 +1,112 @@
+% layout 'default';
+<body>
+  <style>
+    table#floor { border-collapse: collapse; margin: 6px; border: 12px solid LightGray }
+    table#fondi, table#decori { border-collapse: collapse; margin: 6px; border: 12px solid white }
+
+    td { border: 0.5px solid white; min-width:50px; padding: 0; margin: 0 }
+    tr { line-height:50px }
+  </style>
+  <div class="container">
+    %= include 'components/menu';  
+    
+    <div class="row">
+      <div class="col-md-12 col-md-offset-0">
+	<table id="fondi">
+	  <tbody>
+	  </tbody>
+	</table>
+    
+	<table id="decori">
+	  <tbody>
+	  </tbody>
+	</table>
+
+	<table id="floor">
+	  <tbody>
+	  </tbody>
+	</table>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.19.1/URI.min.js"></script>
+<script>
+    $(function(){
+	var sel;
+      var uri = new URI;
+      var w = uri.search(true).width || 5 ;
+      var h = uri.search(true).length || 5;
+      var t = uri.search(true).type;
+      console.log(uri.search(true))
+
+      var deferreds = [
+	  $.get('./decori.json', function(d){
+	  var imgs = d;
+	  var vars = imgs.filter(function(e, i){ return e.startsWith(t) })
+	  var r = $('#decori tbody').get(0).insertRow();
+	  vars.forEach(function(e, i){
+	      var c = r.insertCell();
+	      var img = new Image(50, 50);
+	      img.src = './img/' + e;
+	      c.appendChild(img)
+	  })
+	  }),
+	  $.get('./fondi.json', function(d){
+	      var imgs = d;
+	      var r;
+	      imgs.forEach(function(e, i){
+		  if ((i % 16) == 0) { r = $('#fondi tbody').get(0).insertRow() }
+		  var c = r.insertCell();
+		  var img = new Image(50, 50);
+		  img.src = './img/' + e;
+		  c.appendChild(img)
+	      })
+	  })
+      ];
+      for (var i = 0; i < h; i++) {
+	  var r = $('#floor tbody').get(0).insertRow();
+	  for (var j = 0; j < w; j++) {
+	      var c = r.insertCell();
+	      var img = new Image(50, 50);
+	      img.src = './img/' + t + '_lineare-150x150.jpg';
+	      c.appendChild(img)
+	      if (j == 0) {
+		  $(img).css('transform', 'rotate(-90deg)')
+	      } else if (j == (w-1)) {
+		  $(img).css('transform', 'rotate(90deg)')
+	      }
+	      
+	  }
+      }
+      $.when(deferreds).done(function() {
+	  console.log('done deferreds')
+	  $('#decori, #fondi').on('click', function(e){
+	      sel = $(e.target).attr('src')
+	      console.log(sel);
+	  })
+	  $('#floor').on('mouseover', function(e){
+	      if (e.shiftKey && (typeof sel !== 'undefined')) {
+		  console.log(sel);
+		  $(e.target).attr('src', sel)
+	      }
+	  })
+
+	  
+	  $('#floor td img').on('click', function(e){
+	      if (e.shiftKey) {
+		  var r = $(e.target).data('rotation') || 0;
+		  r = (r + 90) % 360;
+		  $(e.target).css('transform', 'rotate(' + r + 'deg)')
+		  $(e.target).data('rotation', r);
+	      } else {
+		  if (typeof sel !== 'undefined') {
+		      console.log(sel);
+		      $(e.target).attr('src', sel)
+		  }
+	      }
+	  })
+      })
+  })
+</script>

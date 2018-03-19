@@ -1,0 +1,20 @@
+// I am foobar
+var q = {};
+// console.log(s);
+Object.keys(s)
+    .filter(function(e, i){ return e.match(/_var$/) })
+    .forEach(function(e, i){
+	var k = e.replace(/_var$/, '');
+	console.log(k);
+	q[k] = q[k] || {};
+	q[k].bounds = [];
+	q[k].name = s[e]
+	
+	if (s[k + '_list']) { q[k].list = s[k + '_list'].split(/;\s*|\n/) }
+	if (s[k + '_min'] !== undefined) { q[k].bounds[0] = s[k + '_min'] }
+	if (s[k + '_max'] !== undefined) { q[k].bounds[1] = s[k + '_max'] }
+    });
+
+// $('#changed pre').html(JSON.stringify(q, undefined, ' '));
+
+ 

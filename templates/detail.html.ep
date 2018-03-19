@@ -1,0 +1,41 @@
+% layout 'default';
+<body>
+  <style>
+    .form-row label { display: table-cell; vertical-align: bottom; }
+    .tall label { height: 3em }; 
+  </style>    
+  <div class="container">
+    <div class="row">
+    %= include 'components/menu';  
+    <div class="col-md-10 col-md-offset-0">
+      <div class="form-group">
+	<form style="display:none">
+	  %= include 'components/detail';
+	</form>
+	<hr />
+	<button id="go" type="button" class="btn btn-primary">Go!</button>
+      </div>
+    </div>
+    </div>
+</body>
+<script>
+  $(function(){
+      var u = new URI;
+      var q = u.query();
+      var s = u.search(true);
+      $(Object.keys(s).map(function(e, i){  return '#' + e + ' > div' }).join(', ')).hide();
+      Object.keys(s).forEach(function(e, i){
+	  $('#' + e + ' > div.' + s[e]).show();
+      })
+      $('form').show()
+      $('button#go').click(function(){
+	  var u = new URI ('chart.html');
+	  u.search([ q, $('form').serialize() ].join('&'));
+	  var s = u.search(true);
+	  Object.keys(s).forEach(function(e, i){ if (s[e].length == 0) { delete s[e] } })
+	  console.log(s);
+	  u.search(s);
+	  window.location.href = u.toString();
+      })
+  })
+</script>

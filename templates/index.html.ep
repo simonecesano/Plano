@@ -1,0 +1,26 @@
+% layout 'default';
+<body>
+  <div class="container">
+    <div class="row">
+    %= include 'components/menu';  
+    <div class="col-md-10 col-md-offset-0">
+      <div class="form-group">
+	<form>
+	  %= include 'components/questionnaire';
+	</form>
+	<hr />
+	<button id="go" type="button" class="btn btn-primary">Next</button>
+      </div>
+    </div>
+    </div>
+</body>
+<script>
+  $(function(){
+      $('button#go').click(function(){
+	  var u = new URI ('detail.html');
+	  u.search($('form').serialize() );
+	  console.log(u.toString())
+	  window.location.href = u.toString();
+      })
+  })
+</script>

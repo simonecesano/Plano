@@ -1,0 +1,93 @@
+<h1 id="settingupvariables">Setting up variables</h1>
+<div class="form-group">
+  <label for="x_type">What would you like the X axis to represent?</label>
+  <br>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="x_type_1" name="x_type" type="radio" value="continuous">
+      <label class="form-check-label" for="x_type_1">a continuous scale</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="x_type_2" name="x_type" type="radio" value="time">
+      <label class="form-check-label" for="x_type_2">time</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="x_type_3" name="x_type" type="radio" value="groups">
+      <label class="form-check-label" for="x_type_3">groups of items</label>
+  </div>
+</div>
+<div class="form-group">
+  <label for="y_type">And on the Y axis?</label>
+  <br>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="y_type_1" name="y_type" type="radio" value="continuous">
+      <label class="form-check-label" for="y_type_1">a continuous scale</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="y_type_2" name="y_type" type="radio" value="groups">
+      <label class="form-check-label" for="y_type_2">groups of items</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="y_type_3" name="y_type" type="radio" value="a_list_of_items">
+      <label class="form-check-label" for="y_type_3">a list of items</label>
+  </div>
+</div>
+<div class="form-group">
+  <label for="resize_items">Do you want to be able to resize items?</label>
+  <br>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="resize_items_1" name="resize_items" type="radio" value="no">
+      <label class="form-check-label" for="resize_items_1">no</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="resize_items_2" name="resize_items" type="radio" value="one_way">
+      <label class="form-check-label" for="resize_items_2">one way (overall size only)</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="resize_items_3" name="resize_items" type="radio" value="two_ways">
+      <label class="form-check-label" for="resize_items_3">two ways (width and height separately)</label>
+  </div>
+</div>
+<div class="form-group">
+  <label for="color_code">Would you like to color code your items?</label>
+  <br>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="color_code_1" name="color_code" type="radio" value="no">
+      <label class="form-check-label" for="color_code_1">no</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="color_code_2" name="color_code" type="radio" value="groups">
+      <label class="form-check-label" for="color_code_2">yes, for groups</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="color_code_3" name="color_code" type="radio" value="values">
+      <label class="form-check-label" for="color_code_3">yes, for values</label>
+  </div>
+</div>
+<div class="form-group">
+  <label for="texture_code">Would you like to also use texture fills to classify your items?</label>
+  <br>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="texture_code_1" name="texture_code" type="radio" value="yes">
+      <label class="form-check-label" for="texture_code_1">yes</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="texture_code_2" name="texture_code" type="radio" value="no">
+      <label class="form-check-label" for="texture_code_2">no</label>
+  </div>
+</div>
+<div class="form-group">
+  <label for="item_shape">What shape would you like your items to be?</label>
+  <br>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="item_shape_1" name="item_shape" type="radio" value="circles">
+      <label class="form-check-label" for="item_shape_1">circles</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="item_shape_2" name="item_shape" type="radio" value="rectangles">
+      <label class="form-check-label" for="item_shape_2">rectangles</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" id="item_shape_3" name="item_shape" type="radio" value="rectangles_with_round_corners">
+      <label class="form-check-label" for="item_shape_3">rectangles with round corners</label>
+  </div>
+</div>
