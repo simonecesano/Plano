@@ -3,7 +3,6 @@
   #sidebar .form-group > label { font-weight: bold; }
   .slider { width: 100% }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.1/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" media="screen" />
 <script id="sidebar-template" type="text/x-handlebars-template">
@@ -21,7 +20,7 @@
       {{/each}}
       {{else}}
       <p style="width=100%; padding-left:1em">
-	<input class="slider" id="{{@key}}_val_slider" data-provide="slider" data-slider-id="{{@key}}_val_slider_slider"
+	<input class="slider" id="{{@key}}_val" data-provide="slider" data-slider-id="{{@key}}_val_slider"
 	       type="text" data-slider-min="{{ this.bounds.[0] }}" data-slider-max="{{ this.bounds.[1] }}"
 	       data-slider-step="1" data-slider-value="{{ this.bounds.[0] }}"/>
 	<span style="padding-left:1em">{{ this.bounds.[0] }}</span>
